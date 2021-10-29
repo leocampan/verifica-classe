@@ -3,6 +3,11 @@ public class App {
         Classe c1 = new Classe(14, "4^Ai", 305);
 
         Alunno a1 = new Alunno("Leonardo", "24/02/2003", "Via Spiazze 36");
+        a1.addValutazione("Matematica", 10);
+        // a1.removeMateria("Matematica");
+        // a1.modificaVoto("matematica", 3);
+        a1.modificaMateria("matematica", "storia");
+
         Alunno a2 = new Alunno("Kevin", "24/02/2003", "Via Spiazze 36");
         Alunno a3 = new Alunno("Daniele", "24/02/2003", "Via Spiazze 36");
         Alunno a4 = new Alunno("Giacomo", "24/02/2003", "Via Spiazze 36");
@@ -15,8 +20,8 @@ public class App {
         c1.addAlunno(a4);
         c1.addAlunno(a5);
         c1.addAlunno(a6);
-        
-        System.out.println(c1.elencoAlunniAnno("2002"));
+
+    
 
         System.out.println(c1);
     }

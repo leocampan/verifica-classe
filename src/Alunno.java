@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Alunno {
@@ -5,8 +6,9 @@ public class Alunno {
     private String nominativo;
     private String dataDiNascita;
     private String indirizzoDiResidenza;
+    ArrayList<Disciplina> materie = new ArrayList<>();
 
-    /******************** metodi ********************/
+    /******************** costruttori ********************/
     public Alunno() {
     }
 
@@ -16,6 +18,7 @@ public class Alunno {
         this.indirizzoDiResidenza = indirizzoDiResidenza;
     }
 
+    /******************** getter & setter ********************/
     public String getNominativo() {
         return this.nominativo;
     }
@@ -40,6 +43,7 @@ public class Alunno {
         this.indirizzoDiResidenza = indirizzoDiResidenza;
     }
 
+    /********************** metodi **********************/
     public Alunno nominativo(String nominativo) {
         setNominativo(nominativo);
         return this;
@@ -53,6 +57,44 @@ public class Alunno {
     public Alunno indirizzoDiResidenza(String indirizzoDiResidenza) {
         setIndirizzoDiResidenza(indirizzoDiResidenza);
         return this;
+    }
+
+    public void addValutazione(String materia, double voto) {
+        materie.add(new Disciplina(voto, materia));
+    }
+
+    public void removeValutazione(String materia) {
+        for (int i = 0; i < materie.size(); i++) {
+            if (materie.get(i).getMateria().equalsIgnoreCase(materia)) {
+                materie.remove(i);
+            }
+        }
+    }
+
+    public void modificaVoto(String materia, int votomodificato) {
+        for (int index = 0; index < materie.size(); index++) {
+            if (materie.get(index).getMateria().equalsIgnoreCase(materia)) {
+                materie.get(index).setValutazione(votomodificato);
+            }
+        }
+    }
+
+    public void modificaMateria(String materia, String materiaModificata) {
+        for (int index = 0; index < materie.size(); index++) {
+            if (materie.get(index).getMateria().equalsIgnoreCase(materia)) {
+                materie.get(index).setMateria(materiaModificata);
+            }
+        }
+    }
+
+    public double mediaMateria(String materia) {
+        double media = 0;
+
+        for (int i = 0; i < materie.size(); i++) {
+            if (materie.get(i).)
+        }
+        
+        return media;
     }
 
     @Override
@@ -73,9 +115,12 @@ public class Alunno {
 
     @Override
     public String toString() {
-        return 
-            "\n\nNominativo = " + getNominativo() + 
-            "\tData di nascita = " + getDataDiNascita() + 
-            "\tResidenza = " + getIndirizzoDiResidenza();
+        String s = "";
+        
+        for (int i = 0; i < materie.size(); i++) {
+            s += materie.get(i);
+        }
+    
+        return "\n\nNominativo = " + getNominativo() + "\tData di nascita = " + getDataDiNascita() + "\tResidenza = " + getIndirizzoDiResidenza() + s; 
     }
 }
