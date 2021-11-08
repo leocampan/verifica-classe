@@ -1,16 +1,19 @@
 import java.util.Objects;
+import java.time.*;
 
-public class Disciplina {
+public class Disciplina  implements Comparable {
     /******************** attibuti ********************/
     private double valutazione;
     private String materia;
+    private LocalDate dataVoto;
 
     public Disciplina() {
     }
 
-    public Disciplina(double valutazione, String materia) {
+    public Disciplina(double valutazione, String materia, LocalDate dataVoto) {
         this.valutazione = valutazione;
         this.materia = materia;
+        this.dataVoto = dataVoto;
     }
 
     public double getValutazione() {
@@ -39,6 +42,21 @@ public class Disciplina {
         return this;
     }
 
+    public LocalDate getDataVoto() {
+        return this.dataVoto;
+    }
+
+    public void setDataVoto(LocalDate dataVoto) {
+        this.dataVoto = dataVoto;
+    }
+
+    @Override
+    public int compareTo(Object obj) {
+        
+
+        return this.dataVoto.compareTo(((Disciplina) obj).getDataVoto()); 
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -57,7 +75,8 @@ public class Disciplina {
 
     @Override
     public String toString() {
-        return "\n\n|--------------------| valutazioni |--------------------|" + "\nMateria = " + getMateria() + "\tVoto = " + getValutazione();
+        return 
+                "\nMateria = " + getMateria() + "\tVoto = " + getValutazione() + "\tData = " + getDataVoto();
     }
 
 }

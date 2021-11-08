@@ -1,14 +1,15 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class Classe {
-    /******************** attributi ********************/
+    /******************** [attributi] ********************/
     ArrayList<Alunno> alunni = new ArrayList<>();
     private int elencoAlunni;
     private String identifictore;
     private int numeroAula;
 
-    /******************** metodi ********************/
+    /******************** [costruttori] ********************/
     public Classe() {
     }
 
@@ -18,8 +19,19 @@ public class Classe {
         this.numeroAula = numeroAula;
     }
 
+    /******************** [getter & setter] ********************/
+    
+
     public int getElencoAlunni() {
         return this.elencoAlunni;
+    }
+
+    public ArrayList<Alunno> getAlunni() {
+        return alunni;
+    }
+
+    public void setAlunni(ArrayList<Alunno> alunni) {
+        this.alunni = alunni;
     }
 
     public void setElencoAlunni(int elencoAlunni) {
@@ -57,6 +69,7 @@ public class Classe {
         return this;
     }
 
+    /********************** [metodi] **********************/
     public void addAlunno (Alunno alunno) {
         alunni.add(alunno);
     }
@@ -100,11 +113,11 @@ public class Classe {
         return esito;
     }
 
-    public ArrayList<Alunno> elencoAlunniAnno(String anno) {
+    public ArrayList<Alunno> elencoAlunniAnno(int anno) {
         ArrayList<Alunno> alunniStessoAnno = new ArrayList<>();
 
         for (int i = 0; i < alunni.size(); i++) {
-            if (alunni.get(i).getDataDiNascita().contains(anno)) {
+            if (alunni.get(i).getDataDiNascita().getYear() == anno) {
                 alunniStessoAnno.add(alunni.get(i));
             }
         }
@@ -112,13 +125,15 @@ public class Classe {
         return alunniStessoAnno;
     }
 
-    public String dataDiNascita(int i) {
+    public LocalDate dataDiNascita(int i) {
         return alunni.get(i).getDataDiNascita();
     }
 
     public int numeroAlunni() {
         return alunni.size();
     }
+
+
 
     @Override
     public boolean equals(Object o) {
@@ -144,8 +159,6 @@ public class Classe {
             s += alunni.get(i);
         }
 
-        return "\nElenco alunni: " + elencoAlunni +
-            "\tSezione: " + identifictore +
-            "\tNumero aula: " + numeroAula + s;
+        return "\nSezione: " + identifictore + "\tElenco alunni: " + elencoAlunni +  "\tNumero aula: " + numeroAula + s;
     }  
 }
