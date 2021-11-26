@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.util.Objects;
 import java.time.*;
-public class Alunno implements Comparable {
+import java.io.Serializable;
+
+public class Alunno implements Comparable, Serializable {
     /******************** [attributi] ********************/
     private String nominativo;
     private LocalDate dataDiNascita;
@@ -165,7 +167,7 @@ public class Alunno implements Comparable {
             s += materie.get(i);
         }
     
-        return  "\n⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺⸺"+
-                 "\nNominativo = " + getNominativo() + "\tData di nascita = " + getDataDiNascita() + "\tResidenza = " + getIndirizzoDiResidenza() + "\n\n|-----------------------| valutazioni |-----------------------|" + s ; 
+        return  "\n______________________________________________________________________________________" +   
+                "\nNominativo = " + getNominativo() + "\tData di nascita = " + getDataDiNascita() + "\tResidenza = " + getIndirizzoDiResidenza() + "\n\n|-----------------------| valutazioni |-----------------------|" + s ; 
     }
 }

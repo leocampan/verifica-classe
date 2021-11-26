@@ -1,8 +1,12 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
-public class App {
+import java.io.Serializable;
+
+public class Main {
     public static void main(String[] args) throws Exception {
+        
+
         Classe c1 = new Classe(14, "4^Ai", 305);
 
         Alunno a1 = new Alunno("Leonardo", LocalDate.of(2003, 02, 24), "Via Spiazze 36");
@@ -13,6 +17,7 @@ public class App {
         a1.addValutazione("scienze", 9, LocalDate.of(2021, 12, 25));
         a1.addValutazione("Matematica", 2, LocalDate.of(2021, 12, 8));
         a1.addValutazione("Matematica", 10, LocalDate.of(2021, 12, 11)); 
+        a1.addValutazione("Telecomunicazioni", 7, LocalDate.of(2021, 11, 24));
 
         //a1.removeMateria("Matematica");
         //a1.modificaVoto("matematica", 3);
@@ -39,11 +44,14 @@ public class App {
 
         ArrayList<Disciplina> m = a1.getMaterie();
         m.sort((m1, m2) -> m1.getDataVoto().compareTo(m2.getDataVoto()));
-        System.out.println(m);
+        // System.out.println(m);
         // Collections.sort(c1.getAlunni());
-        // System.out.println(c1);
-        //System.out.println(c1.elencoAlunniAnno("2009"));
+        System.out.println(c1);
+        // System.out.println(c1.elencoAlunniAnno("2009"));
 
-        
+        c1.save("data.sus");
+
+        Classe c2 = c1.load("data.sus");
+        // System.out.println(c2);
     }
 }

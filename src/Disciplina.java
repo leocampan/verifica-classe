@@ -1,12 +1,14 @@
-import java.util.Objects;
+import java.util.*;
 import java.time.*;
+import java.io.*;
 
-public class Disciplina  implements Comparable {
+public class Disciplina  implements Comparable, Serializable {
     /******************** attibuti ********************/
     private double valutazione;
     private String materia;
     private LocalDate dataVoto;
 
+    /******************** costruttori ********************/
     public Disciplina() {
     }
 
@@ -16,6 +18,7 @@ public class Disciplina  implements Comparable {
         this.dataVoto = dataVoto;
     }
 
+    /******************** setter & getter ********************/
     public double getValutazione() {
         return this.valutazione;
     }

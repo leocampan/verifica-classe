@@ -1,8 +1,15 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.io.ObjectOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectInput;
+import java.io.Serializable;
 
-public class Classe {
+public class Classe implements Serializable {
     /******************** [attributi] ********************/
     ArrayList<Alunno> alunni = new ArrayList<>();
     private int elencoAlunni;
@@ -69,7 +76,7 @@ public class Classe {
         return this;
     }
 
-    /********************** [metodi] **********************/
+    /********************** [methods] **********************/
     public void addAlunno (Alunno alunno) {
         alunni.add(alunno);
     }
@@ -133,7 +140,31 @@ public class Classe {
         return alunni.size();
     }
 
+    public void save(String nomeFile) {
+        try {
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(nomeFile));
+            out.writeObject(this);
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
+    public static Classe load(String nomeFile) {
+        Classe classe = null;
+
+        try {
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(nomeFile));
+            classe = (Classe) in.readObject();
+            in.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException c) {
+            c.printStackTrace();
+        }
+
+        return classe;
+    }
 
     @Override
     public boolean equals(Object o) {
